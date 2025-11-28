@@ -166,6 +166,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('batteryIcon').className = 'fas ' + iconClass;
 
         results.style.display = 'block';
+
+        // Google Analytics event
+        gtag('event', 'calculate_battery_life', {
+            'battery_type': batteryType.value,
+            'language': document.documentElement.lang,
+            'temperature': document.getElementById('temperature').value
+        });
     });
 
     function convertTimeToSeconds(time, unit) {
