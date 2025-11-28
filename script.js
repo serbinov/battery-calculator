@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             avgCurrentDisplay = avgCurrent * 1000;
             avgCurrentUnit = 'мкА';
         }
-        document.getElementById('avgCurrent').textContent = avgCurrentDisplay.toFixed(3);
+        document.getElementById('avgCurrent').textContent = parseFloat(avgCurrentDisplay.toFixed(3)).toString();
         document.getElementById('avgCurrentUnit').textContent = avgCurrentUnit;
 
         // Determine the best unit
