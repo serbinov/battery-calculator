@@ -9,7 +9,7 @@ A web-based calculator for estimating battery life in electronic devices based o
 - **Flexible Units**: Input time in microseconds (μs), milliseconds (ms), or seconds (s); current in microamps (μA) or milliamps (mA).
 - **Detailed Calculations**: Computes average current consumption, battery life in hours/days/months/years, and displays progress bar.
 - **Battery Information**: Shows capacity, voltage, size, max current, discharge rate, shelf life, and description for selected batteries.
-- **Multilingual Support**: Interface in English and Russian with easy language switching.
+- **Multilingual Support**: Switch between English and Russian interfaces with the "RU|EN" button in the top-right corner; language preference is saved in browser storage. Includes SEO meta tags and Open Graph for both languages.
 - **Responsive Design**: Optimized for desktop and mobile devices.
 - **Analytics**: Integrated Google Analytics for usage tracking.
 - **SEO Optimized**: Meta tags and Open Graph support for better search visibility in multiple languages.
