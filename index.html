@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Battery Life Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Battery Life Calculator - Calculate battery life for electronic devices based on active and sleep current consumption.">
+    <meta name="keywords" content="battery calculator, battery life, electronics, CR2032, AAA, AA, 9V, current consumption">
+    <meta name="author" content="Oleg Serbinov">
+    <link rel="icon" href="battery-favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Battery Life Calculator</h1>
+        
+        <div class="section">
+            <h2><i class="fas fa-battery-half"></i> Battery Type Selection</h2>
+            <select id="batteryType">
+                <optgroup label="Primary Batteries (Non-rechargeable)">
+                    <option value="CR1220" selected>CR1220 (35mAh, 3V)</option>
+                    <option value="CR1616">CR1616 (50mAh, 3V)</option>
+                    <option value="CR1620">CR1620 (75mAh, 3V)</option>
+                    <option value="CR2016">CR2016 (90mAh, 3V)</option>
+                    <option value="LR44">LR44 (150mAh, 1.5V)</option>
+                    <option value="CR2025">CR2025 (160mAh, 3V)</option>
+                    <option value="CR2032">CR2032 (220mAh, 3V)</option>
+                    <option value="CR2450">CR2450 (560mAh, 3V)</option>
+                    <option value="9V">9V Battery (550mAh, 9V)</option>
+                    <option value="AAA">AAA (1000mAh, 1.5V)</option>
+                    <option value="CR123A">CR123A (1500mAh, 3V)</option>
+                    <option value="AA">AA (2500mAh, 1.5V)</option>
+                    <option value="D">D (10000mAh, 1.5V)</option>
+                </optgroup>
+                <optgroup label="Rechargeable Battery Chemistry">
+                    <option value="Ni-Cd">Ni-Cd</option>
+                    <option value="Ni-MH">Ni-MH</option>
+                    <option value="Li-Ion">Li-Ion</option>
+                    <option value="Li-Pol">Li-Pol</option>
+                    <option value="Lead-acid">Lead-acid</option>
+                </optgroup>
+            </select>
+            <div class="input-group">
+                <label for="temperature">Temperature:</label>
+                <select id="temperature">
+                    <option value="25" selected>25°C</option>
+                    <option value="0">0°C</option>
+                    <option value="-10">-10°C</option>
+                    <option value="-20">-20°C</option>
+                </select>
+            </div>
+            <div id="batteryInfo">
+                <p><strong>Average Capacity:</strong> <span id="capacity">0</span> mAh</p>
+                <p><strong>Start Voltage:</strong> <span id="voltageStart">0</span> V</p>
+                <p><strong>End Voltage:</strong> <span id="voltageEnd">0</span> V</p>
+                <div id="batteryInfoDetails"></div>
+            </div>
+            <div id="rechargeableCapacity" style="display: none;">
+                <div class="input-group">
+                    <label for="rechargeableCapacityInput">Capacity at 25°C (mAh):</label>
+                    <input type="number" id="rechargeableCapacityInput" step="0.01" min="0" class="narrow-input">
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><i class="fas fa-clock"></i> Active Time</h2>
+            <div class="input-group">
+                <label for="activeTime"><i class="fas fa-stopwatch"></i> Time:</label>
+                <input type="number" id="activeTime" step="0.01">
+                <select id="activeTimeUnit">
+                    <option value="us" selected>μs</option>
+                    <option value="ms">ms</option>
+                    <option value="s">sec</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="activeCurrent"><i class="fas fa-bolt"></i> Current:</label>
+                <input type="number" id="activeCurrent" step="0.01">
+                <select id="activeCurrentUnit">
+                    <option value="ua" selected>μA</option>
+                    <option value="ma">mA</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><i class="fas fa-moon"></i> Sleep Time</h2>
+            <div class="input-group">
+                <label for="sleepTime"><i class="fas fa-stopwatch"></i> Time:</label>
+                <input type="number" id="sleepTime" step="0.01">
+                <select id="sleepTimeUnit">
+                    <option value="us" selected>μs</option>
+                    <option value="ms">ms</option>
+                    <option value="s">sec</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="sleepCurrent"><i class="fas fa-bolt"></i> Current:</label>
+                <input type="number" id="sleepCurrent" step="0.01">
+                <select id="sleepCurrentUnit">
+                    <option value="ua" selected>μA</option>
+                    <option value="ma">mA</option>
+                </select>
+            </div>
+        </div>
+        
+        <button id="calculateBtn">Calculate</button>
+        
+        <div class="results" id="results">
+            <h2><i class="fas fa-chart-line"></i> Results</h2>
+            <p>Average Current Consumption: <span id="avgCurrent">__</span> <span id="avgCurrentUnit">mA</span></p>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+            </div>
+            <p>Battery Life: <i class="fas fa-battery-empty" id="batteryIcon"></i> <span id="batteryLifeValue">__</span> <span id="batteryLifeUnit">hours</span></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Developed by Oleg Serbinov <a href="https://serbinov.github.io" target="_blank">Website</a> <a href="https://github.com/serbinov" target="_blank">GitHub</a></p>
+        <p>Version 1.0 | Development Date: November 28, 2025</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
