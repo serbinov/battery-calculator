@@ -136,11 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('avgCurrent').textContent = avgCurrentDisplay.toFixed(3);
         document.getElementById('avgCurrentUnit').textContent = avgCurrentUnit;
 
-        // Progress bar: assume 1000 hours is 100%
-        const maxHours = 1000;
-        const progressPercent = Math.min((batteryLifeHours / maxHours) * 100, 100);
-        document.getElementById('progressBar').style.width = progressPercent + '%';
-
         // Determine the best unit
         let displayValue, displayUnit, iconClass;
         if (batteryLifeYears >= 1) {
