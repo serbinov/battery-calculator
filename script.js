@@ -174,6 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'us': return time / 1000000;
             case 'ms': return time / 1000;
             case 's': return time;
+            case 'min': return time * 60;
+            case 'h': return time * 3600;
             default: return time;
         }
     }
@@ -196,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (unit) {
             case 'ua': return current / 1000;
             case 'ma': return current;
+            case 'a': return current * 1000;
             default: return current;
         }
     }

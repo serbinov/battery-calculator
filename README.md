@@ -6,7 +6,7 @@ A web-based calculator for estimating battery life in electronic devices based o
 
 - **Battery Selection**: Choose from a wide range of primary batteries (CR1220, CR2032, AAA, AA, D, 9V, etc.) or rechargeable chemistries (Li-Ion, Ni-MH, Lead-acid, etc.) with manual capacity input for rechargeables.
 - **Temperature Compensation**: Accounts for temperature effects on battery capacity (-20°C to 25°C) with automatic factors for different battery types.
-- **Flexible Units**: Input time in microseconds (μs), milliseconds (ms), or seconds (s); current in microamps (μA) or milliamps (mA).
+- **Flexible Units**: Input time in microseconds (μs), milliseconds (ms), seconds (s), minutes (min), or hours (h); current in microamps (μA), milliamps (mA), or amps (A).
 - **Detailed Calculations**: Computes average current consumption, battery life in hours/days/months/years.
 - **Battery Information**: Shows capacity, voltage, size, max current, discharge rate, shelf life, and description for selected batteries.
 - **Responsive Design**: Optimized for desktop and mobile devices.
