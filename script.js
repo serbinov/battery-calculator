@@ -125,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const batteryLifeDays = batteryLifeHours / 24;
         const batteryLifeMonths = batteryLifeDays / 30;
         const batteryLifeYears = batteryLifeDays / 365;
+        const batteryLifeMinutes = batteryLifeHours * 60;
+        const batteryLifeSeconds = batteryLifeMinutes * 60;
 
         // Display results
         let avgCurrentDisplay = avgCurrent;
@@ -150,9 +152,17 @@ document.addEventListener('DOMContentLoaded', function() {
             displayValue = batteryLifeDays;
             displayUnit = 'days';
             iconClass = 'fa-battery-half';
-        } else {
+        } else if (batteryLifeHours >= 1) {
             displayValue = batteryLifeHours;
             displayUnit = 'hours';
+            iconClass = 'fa-battery-quarter';
+        } else if (batteryLifeMinutes >= 1) {
+            displayValue = batteryLifeMinutes;
+            displayUnit = 'minutes';
+            iconClass = 'fa-battery-quarter';
+        } else {
+            displayValue = batteryLifeSeconds;
+            displayUnit = 'seconds';
             iconClass = 'fa-battery-quarter';
         }
 
