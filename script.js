@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const activeEnergy = (activeCurrentMa / 1000) * averageVoltage * (activeTimeSec / 3600);
         const sleepEnergy = (sleepCurrentMa / 1000) * averageVoltage * (sleepTimeSec / 3600);
         const totalEnergyCycle = activeEnergy + sleepEnergy;
-        const totalEnergyLife = (capacity / 1000) * averageVoltage;
+        const totalEnergyLife = (capacityWith / 1000) * averageVoltage;
 
         // Calculate battery life without self-discharge
         const batteryLifeHoursWithout = capacity / avgCurrent;
