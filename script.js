@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Description:</strong> ${data.description}</p>
                 <p><strong>Temperature Factor (${temperature}°C):</strong> ${(tempFactor * 100).toFixed(0)}%</p>
                 <p><strong>Self-Discharge Rate:</strong> ${data.selfDischargeRate}% per month</p>
+                <p><strong>Average Voltage:</strong> ${(voltageStart + voltageEnd) / 2} V</p>
             `;
             details.style.display = 'block';
         } else {
@@ -70,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Description:</strong> ${data.description}</p>
                 <p><strong>Temperature Factor (${temperature}°C):</strong> ${(tempFactor * 100).toFixed(0)}%</p>
                 <p><strong>Self-Discharge Rate:</strong> ${data.selfDischargeRate}% per month</p>
+                <p><strong>Average Voltage:</strong> ${(voltageStart + voltageEnd) / 2} V</p>
             `;
             details.style.display = 'block';
         }
@@ -92,6 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const temperature = document.getElementById('temperature').value;
         const tempFactor = getTemperatureFactor(batteryData[batteryType.value].type, temperature);
         capacity *= tempFactor;
+
+        const voltageStart = batteryData[batteryType.value].voltageStart;
+        const voltageEnd = batteryData[batteryType.value].voltageEnd;
+        const averageVoltage = (voltageStart + voltageEnd) / 2;
 
         const activeTime = parseFloat(document.getElementById('activeTime').value);
         const activeTimeUnit = document.getElementById('activeTimeUnit').value;
@@ -120,6 +126,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalTime = activeTimeSec + sleepTimeSec;
         const avgCurrent = (activeCurrentMa * activeTimeSec + sleepCurrentMa * sleepTimeSec) / totalTime;
 
+        // Calculate energy consumption (Wh)
+        const activeEnergy = (activeCurrentMa / 1000) * averageVoltage * (activeTimeSec / 3600);
+        const sleepEnergy = (sleepCurrentMa / 1000) * averageVoltage * (sleepTimeSec / 3600);
+        const totalEnergyCycle = activeEnergy + sleepEnergy;
+        const totalEnergyLife = (capacity / 1000) * averageVoltage;
+
         // Calculate battery life without self-discharge
         const batteryLifeHoursWithout = capacity / avgCurrent;
 
@@ -142,6 +154,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         document.getElementById('avgCurrent').textContent = parseFloat(avgCurrentDisplay.toFixed(3)).toString();
         document.getElementById('avgCurrentUnit').textContent = avgCurrentUnit;
+
+        document.getElementById('activeEnergy').textContent = formatEnergy(activeEnergy);
+        document.getElementById('sleepEnergy').textContent = formatEnergy(sleepEnergy);
+        document.getElementById('totalEnergyCycle').textContent = formatEnergy(totalEnergyCycle);
+        document.getElementById('totalEnergyLife').textContent = formatEnergy(totalEnergyLife);
 
         // Get display info for without
         const withoutInfo = getDisplayInfo(batteryLifeHoursWithout);
@@ -196,6 +213,12 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'a': return current * 1000;
             default: return current;
         }
+    }
+
+    function formatEnergy(value) {
+        if (value >= 1) return value.toFixed(3) + ' Wh';
+        if (value >= 0.001) return (value * 1000).toFixed(3) + ' mWh';
+        return (value * 1000000).toFixed(3) + ' uWh';
     }
 
     function getDisplayInfo(batteryLifeHours) {

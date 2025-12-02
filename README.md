@@ -7,11 +7,35 @@ A web-based calculator for estimating battery life in electronic devices based o
 - **Battery Selection**: Choose from a wide range of primary batteries (CR1220, CR2032, AAA, AA, D, 9V, etc.) or rechargeable chemistries (Li-Ion, Ni-MH, Lead-acid, etc.) with manual capacity input for rechargeables.
 - **Self-Discharge Compensation**: Automatically shows battery life with and without self-discharge over the calculated lifetime.
 - **Flexible Units**: Input time in microseconds (μs), milliseconds (ms), seconds (s), minutes (min), or hours (h); current in microamps (μA), milliamps (mA), or amps (A).
-- **Detailed Calculations**: Computes average current consumption, battery life in seconds/minutes/hours/days/months/years.
+- **Detailed Calculations**: Computes average current consumption, energy consumption in active/sleep modes (Wh), total energy per cycle and over battery life, battery life in seconds/minutes/hours/days/months/years.
 - **Battery Information**: Shows capacity, voltage, size, max current, discharge rate, shelf life, and description for selected batteries.
 - **Responsive Design**: Optimized for desktop and mobile devices.
 - **Analytics**: Integrated Google Analytics for usage tracking.
 - **SEO Optimized**: Meta tags and Open Graph support for better search visibility.
+
+## Supported Batteries
+
+### Primary Batteries (Non-rechargeable)
+- CR1220 (35mAh, 3V)
+- CR1616 (50mAh, 3V)
+- CR1620 (75mAh, 3V)
+- CR2016 (90mAh, 3V)
+- LR44 (150mAh, 1.5V)
+- CR2025 (160mAh, 3V)
+- CR2032 (220mAh, 3V)
+- CR2450 (560mAh, 3V)
+- 9V Battery (550mAh, 9V)
+- AAA (1000mAh, 1.5V)
+- CR123A (1500mAh, 3V)
+- AA (2500mAh, 1.5V)
+- D (10000mAh, 1.5V)
+
+### Rechargeable Battery Chemistries
+- Ni-Cd (Nickel-Cadmium)
+- Ni-MH (Nickel-Metal Hydride)
+- Li-Ion (Lithium-Ion)
+- Li-Pol (Lithium-Polymer)
+- Lead-acid
 
 ## Usage
 
