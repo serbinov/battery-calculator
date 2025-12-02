@@ -145,6 +145,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calculate battery life with self-discharge
         const batteryLifeHoursWith = capacityWith / avgCurrent;
 
+        // Calculate number of cycles over battery life
+        const cycles = batteryLifeHoursWith * 3600 / totalTime;
+
+        // Calculate total energy consumption over battery life
+        const activeEnergyTotal = activeEnergy * cycles;
+        const sleepEnergyTotal = sleepEnergy * cycles;
+        const totalEnergyTotal = totalEnergyCycle * cycles;
+
         // Display results
         let avgCurrentDisplay = avgCurrent;
         let avgCurrentUnit = 'мА';
@@ -155,9 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('avgCurrent').textContent = parseFloat(avgCurrentDisplay.toFixed(3)).toString();
         document.getElementById('avgCurrentUnit').textContent = avgCurrentUnit;
 
-        document.getElementById('activeEnergy').textContent = formatEnergy(activeEnergy);
-        document.getElementById('sleepEnergy').textContent = formatEnergy(sleepEnergy);
-        document.getElementById('totalEnergyCycle').textContent = formatEnergy(totalEnergyCycle);
+        document.getElementById('activeEnergy').textContent = formatEnergy(activeEnergyTotal);
+        document.getElementById('sleepEnergy').textContent = formatEnergy(sleepEnergyTotal);
+        document.getElementById('totalEnergyCycle').textContent = formatEnergy(totalEnergyTotal);
         document.getElementById('totalEnergyLife').textContent = formatEnergy(totalEnergyLife);
 
         // Get display info for without
