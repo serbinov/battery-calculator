@@ -5,7 +5,7 @@ A web-based calculator for estimating battery life in electronic devices based o
 ## Features
 
 - **Battery Selection**: Choose from a wide range of primary batteries (CR1220, CR2032, AAA, AA, D, 9V, etc.) or rechargeable chemistries (Li-Ion, Ni-MH, Lead-acid, etc.) with manual capacity input for rechargeables.
-- **Temperature Compensation**: Accounts for temperature effects on battery capacity (-20°C to 25°C) with automatic factors for different battery types.
+- **Self-Discharge Compensation**: Automatically shows battery life with and without self-discharge over the calculated lifetime.
 - **Flexible Units**: Input time in microseconds (μs), milliseconds (ms), seconds (s), minutes (min), or hours (h); current in microamps (μA), milliamps (mA), or amps (A).
 - **Detailed Calculations**: Computes average current consumption, battery life in seconds/minutes/hours/days/months/years.
 - **Battery Information**: Shows capacity, voltage, size, max current, discharge rate, shelf life, and description for selected batteries.
@@ -18,7 +18,7 @@ A web-based calculator for estimating battery life in electronic devices based o
 1. Open `https://serbinov.github.io/battery-calculator/` in a browser.
 2. Select battery type or chemistry.
 3. Enter capacity (for rechargeables), temperature, active time/current, and sleep time/current.
-4. Click "Calculate" to see results.
+4. Click "Calculate" to see results with and without self-discharge.
 
 ## Technologies
 

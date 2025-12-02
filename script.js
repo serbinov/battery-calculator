@@ -6,24 +6,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const results = document.getElementById('results');
 
     const batteryData = {
-        CR1220: { capacity: 35, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '12.5mm dia x 2.0mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', description: 'Coin cell lithium battery.' },
-        CR1616: { capacity: 50, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '16mm dia x 1.6mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', description: 'Coin cell lithium battery.' },
-        CR1620: { capacity: 75, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '16mm dia x 2.0mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', description: 'Coin cell lithium battery.' },
-        CR2016: { capacity: 90, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '20mm dia x 1.6mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', description: 'Coin cell lithium battery.' },
-        LR44: { capacity: 150, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', size: '11.6mm dia x 5.4mm', maxCurrent: '10mA', discharge: '1mA continuous', shelfLife: '5 years', description: 'Button cell alkaline battery.' },
-        CR2025: { capacity: 160, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '20mm dia x 2.5mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', description: 'Coin cell lithium battery.' },
-        CR2032: { capacity: 220, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '20mm dia x 3.2mm', maxCurrent: '1mA', discharge: '0.2mA continuous', shelfLife: '10 years', description: 'Coin cell lithium battery.' },
-        CR2450: { capacity: 560, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '24mm dia x 5.0mm', maxCurrent: '1mA', discharge: '0.2mA continuous', shelfLife: '10 years', description: 'Coin cell lithium battery.' },
-        '9V': { capacity: 550, voltageStart: 9, voltageEnd: 6, type: 'Carbon-Zinc', size: '48mm x 26mm x 17mm', maxCurrent: '500mA', discharge: '10mA continuous', shelfLife: '3 years', description: 'Rectangular carbon-zinc battery.' },
-        AAA: { capacity: 1000, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', size: '10.5mm dia x 44.5mm', maxCurrent: '100mA', discharge: '10mA continuous', shelfLife: '5 years', description: 'Cylindrical alkaline battery.' },
-        CR123A: { capacity: 1500, voltageStart: 3, voltageEnd: 2.5, type: 'Lithium', size: '17mm dia x 34.5mm', maxCurrent: '1.5A', discharge: '0.5A continuous', shelfLife: '10 years', description: 'Cylindrical lithium battery.' },
-        AA: { capacity: 2500, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', size: '14.5mm dia x 50.5mm', maxCurrent: '500mA', discharge: '50mA continuous', shelfLife: '5 years', description: 'Cylindrical alkaline battery.' },
-        D: { capacity: 10000, voltageStart: 1.5, voltageEnd: 1.2, type: 'Carbon-Zinc', size: '34mm dia x 61.5mm', maxCurrent: '1A', discharge: '100mA continuous', shelfLife: '3 years', description: 'Large cylindrical carbon-zinc battery.' },
-        'Ni-Cd': { voltageStart: 1.2, voltageEnd: 1, type: 'Ni-Cd', description: 'Nickel-Cadmium rechargeable chemistry. Enter capacity at 25°C.' },
-        'Ni-MH': { voltageStart: 1.2, voltageEnd: 1, type: 'Ni-MH', description: 'Nickel-Metal Hydride rechargeable chemistry. Enter capacity at 25°C.' },
-        'Li-Ion': { voltageStart: 3.7, voltageEnd: 2.5, type: 'Li-Ion', description: 'Lithium-Ion rechargeable chemistry. Enter capacity at 25°C.' },
-        'Li-Pol': { voltageStart: 3.7, voltageEnd: 2.5, type: 'Li-Pol', description: 'Lithium-Polymer rechargeable chemistry. Enter capacity at 25°C.' },
-        'Lead-acid': { voltageStart: 2.0, voltageEnd: 1.8, type: 'Lead-acid', description: 'Lead-acid rechargeable chemistry. Enter capacity at 25°C.' }
+        CR1220: { capacity: 35, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '12.5mm dia x 2.0mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', selfDischargeRate: 0.166, description: 'Coin cell lithium battery.' },
+        CR1616: { capacity: 50, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '16mm dia x 1.6mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', selfDischargeRate: 0.166, description: 'Coin cell lithium battery.' },
+        CR1620: { capacity: 75, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '16mm dia x 2.0mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', selfDischargeRate: 0.166, description: 'Coin cell lithium battery.' },
+        CR2016: { capacity: 90, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '20mm dia x 1.6mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', selfDischargeRate: 0.166, description: 'Coin cell lithium battery.' },
+        LR44: { capacity: 150, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', size: '11.6mm dia x 5.4mm', maxCurrent: '10mA', discharge: '1mA continuous', shelfLife: '5 years', selfDischargeRate: 0.166, description: 'Button cell alkaline battery.' },
+        CR2025: { capacity: 160, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '20mm dia x 2.5mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', selfDischargeRate: 0.166, description: 'Coin cell lithium battery.' },
+        CR2032: { capacity: 220, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '20mm dia x 3.2mm', maxCurrent: '1mA', discharge: '0.2mA continuous', shelfLife: '10 years', selfDischargeRate: 0.166, description: 'Coin cell lithium battery.' },
+        CR2450: { capacity: 560, voltageStart: 3, voltageEnd: 2, type: 'Lithium', size: '24mm dia x 5.0mm', maxCurrent: '1mA', discharge: '0.2mA continuous', shelfLife: '10 years', selfDischargeRate: 0.166, description: 'Coin cell lithium battery.' },
+        '9V': { capacity: 550, voltageStart: 9, voltageEnd: 6, type: 'Carbon-Zinc', size: '48mm x 26mm x 17mm', maxCurrent: '500mA', discharge: '10mA continuous', shelfLife: '3 years', selfDischargeRate: 0.833, description: 'Rectangular carbon-zinc battery.' },
+        AAA: { capacity: 1000, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', size: '10.5mm dia x 44.5mm', maxCurrent: '100mA', discharge: '10mA continuous', shelfLife: '5 years', selfDischargeRate: 0.166, description: 'Cylindrical alkaline battery.' },
+        CR123A: { capacity: 1500, voltageStart: 3, voltageEnd: 2.5, type: 'Lithium', size: '17mm dia x 34.5mm', maxCurrent: '1.5A', discharge: '0.5A continuous', shelfLife: '10 years', selfDischargeRate: 0.166, description: 'Cylindrical lithium battery.' },
+        AA: { capacity: 2500, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', size: '14.5mm dia x 50.5mm', maxCurrent: '500mA', discharge: '50mA continuous', shelfLife: '5 years', selfDischargeRate: 0.166, description: 'Cylindrical alkaline battery.' },
+        D: { capacity: 10000, voltageStart: 1.5, voltageEnd: 1.2, type: 'Carbon-Zinc', size: '34mm dia x 61.5mm', maxCurrent: '1A', discharge: '100mA continuous', shelfLife: '3 years', selfDischargeRate: 0.833, description: 'Large cylindrical carbon-zinc battery.' },
+        'Ni-Cd': { voltageStart: 1.2, voltageEnd: 1, type: 'Ni-Cd', selfDischargeRate: 20, description: 'Nickel-Cadmium rechargeable chemistry. Enter capacity at 25°C.' },
+        'Ni-MH': { voltageStart: 1.2, voltageEnd: 1, type: 'Ni-MH', selfDischargeRate: 30, description: 'Nickel-Metal Hydride rechargeable chemistry. Enter capacity at 25°C.' },
+        'Li-Ion': { voltageStart: 3.7, voltageEnd: 2.5, type: 'Li-Ion', selfDischargeRate: 5, description: 'Lithium-Ion rechargeable chemistry. Enter capacity at 25°C.' },
+        'Li-Pol': { voltageStart: 3.7, voltageEnd: 2.5, type: 'Li-Pol', selfDischargeRate: 5, description: 'Lithium-Polymer rechargeable chemistry. Enter capacity at 25°C.' },
+        'Lead-acid': { voltageStart: 2.0, voltageEnd: 1.8, type: 'Lead-acid', selfDischargeRate: 5, description: 'Lead-acid rechargeable chemistry. Enter capacity at 25°C.' }
     };
 
     function updateBatteryInfo() {
@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Type:</strong> ${data.type}</p>
                 <p><strong>Description:</strong> ${data.description}</p>
                 <p><strong>Temperature Factor (${temperature}°C):</strong> ${(tempFactor * 100).toFixed(0)}%</p>
+                <p><strong>Self-Discharge Rate:</strong> ${data.selfDischargeRate}% per month</p>
             `;
             details.style.display = 'block';
         } else {
@@ -68,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>Shelf Life:</strong> ${data.shelfLife}</p>
                 <p><strong>Description:</strong> ${data.description}</p>
                 <p><strong>Temperature Factor (${temperature}°C):</strong> ${(tempFactor * 100).toFixed(0)}%</p>
+                <p><strong>Self-Discharge Rate:</strong> ${data.selfDischargeRate}% per month</p>
             `;
             details.style.display = 'block';
         }
@@ -118,15 +120,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalTime = activeTimeSec + sleepTimeSec;
         const avgCurrent = (activeCurrentMa * activeTimeSec + sleepCurrentMa * sleepTimeSec) / totalTime;
 
-        // Calculate battery life in hours
-        const batteryLifeHours = capacity / avgCurrent;
+        // Calculate battery life without self-discharge
+        const batteryLifeHoursWithout = capacity / avgCurrent;
 
-        // Convert to other units
-        const batteryLifeDays = batteryLifeHours / 24;
-        const batteryLifeMonths = batteryLifeDays / 30;
-        const batteryLifeYears = batteryLifeDays / 365;
-        const batteryLifeMinutes = batteryLifeHours * 60;
-        const batteryLifeSeconds = batteryLifeMinutes * 60;
+        // Calculate months for self-discharge
+        const batteryLifeMonthsWithout = batteryLifeHoursWithout / 24 / 30;
+
+        // Apply self-discharge
+        const selfDischargeRate = batteryData[batteryType.value].selfDischargeRate || 0;
+        const capacityWith = capacity * (1 - selfDischargeRate * batteryLifeMonthsWithout / 100);
+
+        // Calculate battery life with self-discharge
+        const batteryLifeHoursWith = capacityWith / avgCurrent;
 
         // Display results
         let avgCurrentDisplay = avgCurrent;
@@ -138,37 +143,17 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('avgCurrent').textContent = parseFloat(avgCurrentDisplay.toFixed(3)).toString();
         document.getElementById('avgCurrentUnit').textContent = avgCurrentUnit;
 
-        // Determine the best unit
-        let displayValue, displayUnit, iconClass;
-        if (batteryLifeYears >= 1) {
-            displayValue = batteryLifeYears;
-            displayUnit = 'years';
-            iconClass = 'fa-battery-full';
-        } else if (batteryLifeMonths >= 1) {
-            displayValue = batteryLifeMonths;
-            displayUnit = 'months';
-            iconClass = 'fa-battery-three-quarters';
-        } else if (batteryLifeDays >= 1) {
-            displayValue = batteryLifeDays;
-            displayUnit = 'days';
-            iconClass = 'fa-battery-half';
-        } else if (batteryLifeHours >= 1) {
-            displayValue = batteryLifeHours;
-            displayUnit = 'hours';
-            iconClass = 'fa-battery-quarter';
-        } else if (batteryLifeMinutes >= 1) {
-            displayValue = batteryLifeMinutes;
-            displayUnit = 'minutes';
-            iconClass = 'fa-battery-quarter';
-        } else {
-            displayValue = batteryLifeSeconds;
-            displayUnit = 'seconds';
-            iconClass = 'fa-battery-quarter';
-        }
+        // Get display info for without
+        const withoutInfo = getDisplayInfo(batteryLifeHoursWithout);
+        document.getElementById('batteryLifeValueWithout').textContent = withoutInfo.displayValue.toFixed(2);
+        document.getElementById('batteryLifeUnitWithout').textContent = withoutInfo.displayUnit;
+        document.getElementById('batteryIconWithout').className = 'fas ' + withoutInfo.iconClass;
 
-        document.getElementById('batteryLifeValue').textContent = displayValue.toFixed(2);
-        document.getElementById('batteryLifeUnit').textContent = displayUnit;
-        document.getElementById('batteryIcon').className = 'fas ' + iconClass;
+        // Get display info for with
+        const withInfo = getDisplayInfo(batteryLifeHoursWith);
+        document.getElementById('batteryLifeValueWith').textContent = withInfo.displayValue.toFixed(2);
+        document.getElementById('batteryLifeUnitWith').textContent = withInfo.displayUnit;
+        document.getElementById('batteryIconWith').className = 'fas ' + withInfo.iconClass;
 
         results.style.display = 'block';
 
@@ -211,5 +196,41 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'a': return current * 1000;
             default: return current;
         }
+    }
+
+    function getDisplayInfo(batteryLifeHours) {
+        const batteryLifeDays = batteryLifeHours / 24;
+        const batteryLifeMonths = batteryLifeDays / 30;
+        const batteryLifeYears = batteryLifeDays / 365;
+        const batteryLifeMinutes = batteryLifeHours * 60;
+        const batteryLifeSeconds = batteryLifeMinutes * 60;
+
+        let displayValue, displayUnit, iconClass;
+        if (batteryLifeYears >= 1) {
+            displayValue = batteryLifeYears;
+            displayUnit = 'years';
+            iconClass = 'fa-battery-full';
+        } else if (batteryLifeMonths >= 1) {
+            displayValue = batteryLifeMonths;
+            displayUnit = 'months';
+            iconClass = 'fa-battery-three-quarters';
+        } else if (batteryLifeDays >= 1) {
+            displayValue = batteryLifeDays;
+            displayUnit = 'days';
+            iconClass = 'fa-battery-half';
+        } else if (batteryLifeHours >= 1) {
+            displayValue = batteryLifeHours;
+            displayUnit = 'hours';
+            iconClass = 'fa-battery-quarter';
+        } else if (batteryLifeMinutes >= 1) {
+            displayValue = batteryLifeMinutes;
+            displayUnit = 'minutes';
+            iconClass = 'fa-battery-quarter';
+        } else {
+            displayValue = batteryLifeSeconds;
+            displayUnit = 'seconds';
+            iconClass = 'fa-battery-quarter';
+        }
+        return { displayValue, displayUnit, iconClass };
     }
 });
