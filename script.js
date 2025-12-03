@@ -43,7 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const shownChemistry = data && data.chemistry === 'Salt' ? 'Salt' : (data && data.chemistry ? data.chemistry : 'Unknown');
             const temperature = document.getElementById('temperature').value;
             const tempFactor = getTemperatureFactor(data.chemistry, temperature);
-            const inputCapacity = parseFloat(document.getElementById('rechargeableCapacityInput').value) || 0;
+            // inputCapacity is given by the user in amperes (A) for rechargeables; convert to mAh
+            const inputCapacityA = parseFloat(document.getElementById('rechargeableCapacityInput').value) || 0;
+            const inputCapacity = inputCapacityA * 1000; // convert A -> mAh
             const adjustedCapacity = inputCapacity * tempFactor;
             document.getElementById('capacity').textContent = adjustedCapacity.toFixed(0);
             document.getElementById('voltageStart').textContent = data.voltageStart;
@@ -102,7 +104,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let capacity;
         const rechargeableChemistries = ['Ni-Cd', 'Ni-MH', 'Li-Ion', 'Li-Pol', 'Lead-acid'];
         if (rechargeableChemistries.includes(batteryType.value)) {
-            capacity = parseFloat(document.getElementById('rechargeableCapacityInput').value);
+            // user inputs rechargeable capacity in amperes (A) — convert to mAh
+            const inputA = parseFloat(document.getElementById('rechargeableCapacityInput').value);
+            capacity = (isFinite(inputA) && inputA > 0) ? inputA * 1000 : 0;
         } else {
             capacity = batteryData[batteryType.value].capacity;
         }
