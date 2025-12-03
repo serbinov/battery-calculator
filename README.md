@@ -57,3 +57,17 @@ Feel free to fork and contribute!
 ## Developed by
 
 Oleg Serbinov - [Website](https://serbinov.github.io) | [GitHub](https://github.com/serbinov)
+
+## Changelog (recent additions)
+
+v1.1 — 2025-12-03
+- Added explicit `chemistry` metadata to every battery entry in `script.js` (Lithium, Alkaline, Salt, Ni‑MH, Ni‑Cd, Li‑Ion, Lead‑acid).
+- Filled conservative default parameters for every battery: shelf life, self‑discharge (%/month), post‑shelf accelerated loss where applicable and internal resistance/calendar fade.
+- Improved temperature factors per chemistry and used `chemistry` when adjusting displayed capacity/behavior.
+- Fixed selector mismatch bugs so `<select>` option values match `batteryData` keys and the UI updates correctly.
+- Renamed Carbon/Zinc references to **Salt** across UI & code to avoid ambiguous language.
+- Added unit tests verifying metadata presence and selector/key consistency (`tests/test_battery_metadata.py`).
+- Added staged lifecycle handling and consistent post‑shelf simulation behavior (ensuring “with self‑discharge” never exceeds pure‑load result; CPU + load considered post‑shelf).
+- Updated UI to show chemistry in every select option and removed the confusing "Total Energy Consumption" display.
+
+Notes: defaults are conservative values based on common references (BatteryUniversity, vendor ranges). If you want manufacturer‑accurate values we can update these fields with datasheet URLs and add source references in `script.js` and the README.

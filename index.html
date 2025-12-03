@@ -31,19 +31,22 @@
             <h2><i class="fas fa-battery-half"></i> Battery Type Selection</h2>
             <select id="batteryType">
                 <optgroup label="Primary Batteries (Non-rechargeable)">
-                    <option value="CR1220" selected>CR1220 (35mAh, 3V)</option>
-                    <option value="CR1616">CR1616 (50mAh, 3V)</option>
-                    <option value="CR1620">CR1620 (75mAh, 3V)</option>
-                    <option value="CR2016">CR2016 (90mAh, 3V)</option>
-                    <option value="LR44">LR44 (150mAh, 1.5V)</option>
-                    <option value="CR2025">CR2025 (160mAh, 3V)</option>
-                    <option value="CR2032">CR2032 (220mAh, 3V)</option>
-                    <option value="CR2450">CR2450 (560mAh, 3V)</option>
-                    <option value="9V">9V Battery (550mAh, 9V)</option>
-                    <option value="AAA">AAA (1000mAh, 1.5V)</option>
-                    <option value="CR123A">CR123A (1500mAh, 3V)</option>
-                    <option value="AA">AA (2500mAh, 1.5V)</option>
-                    <option value="D">D (10000mAh, 1.5V)</option>
+                    <option value="CR1220" selected>CR1220 (35mAh, 3V) Lithium</option>
+                    <option value="CR1616">CR1616 (50mAh, 3V) Lithium</option>
+                    <option value="CR1620">CR1620 (75mAh, 3V) Lithium</option>
+                    <option value="CR2016">CR2016 (90mAh, 3V) Lithium</option>
+                    <option value="LR44">LR44 (150mAh, 1.5V) Alkaline</option>
+                    <option value="CR2025">CR2025 (160mAh, 3V) Lithium</option>
+                    <option value="CR2032">CR2032 (220mAh, 3V) Lithium</option>
+                    <option value="CR2450">CR2450 (560mAh, 3V) Lithium</option>
+                    <option value="9V">9V (550mAh, 9V) Salt</option>
+                        <option value="AAA">AAA (1000mAh, 1.5V) Alkaline</option>
+                        <option value="AAA (Salt)">AAA (500mAh, 1.5V) Salt</option>
+                    <option value="CR123A">CR123A (1500mAh, 3V) Lithium</option>
+                        <option value="AA">AA (2500mAh, 1.5V) Alkaline</option>
+                        <option value="AA (Salt)">AA (900mAh, 1.5V) Salt</option>
+                          <option value="D">D (10000mAh, 1.5V) Salt</option>
+                          <option value="C">C (2000mAh, 1.5V) Salt</option>
                 </optgroup>
                 <optgroup label="Rechargeable Battery Chemistry">
                     <option value="Ni-Cd">Ni-Cd</option>
@@ -126,21 +129,30 @@
         
         <button id="calculateBtn">Calculate</button>
         
+        <div class="results" id="avgResult">
+            <h2>⚡ Average Current — <strong><span id="avgCurrent">__</span> <span id="avgCurrentUnit">mA</span></strong></h2>
+        </div>
         <div class="results" id="results">
-            <h2><i class="fas fa-chart-line"></i> Results</h2>
-            <p>Average Current Consumption: <span id="avgCurrent">__</span> <span id="avgCurrentUnit">mA</span></p>
-            <p>Energy Consumption in Active Mode over Battery Life: <span id="activeEnergy"></span></p>
-            <p>Energy Consumption in Sleep Mode over Battery Life: <span id="sleepEnergy"></span></p>
-            <p>Total Energy Consumption over Battery Life: <span id="totalEnergyCycle"></span></p>
-            <p>Total Energy Consumption over Battery Life: <span id="totalEnergyLife"></span></p>
-            <p>Battery Life (without self-discharge): <i class="fas fa-battery-empty" id="batteryIconWithout"></i> <span id="batteryLifeValueWithout">__</span> <span id="batteryLifeUnitWithout">hours</span></p>
-            <p>Battery Life (with self-discharge): <i class="fas fa-battery-empty" id="batteryIconWith"></i> <span id="batteryLifeValueWith">__</span> <span id="batteryLifeUnitWith">hours</span></p>
+            <h2>🔋 Battery Life</h2>
+            <p>Energy Consumption in Active Mode: <span id="activeEnergyWithout"></span></p>
+            <p>Energy Consumption in Sleep Mode: <span id="sleepEnergyWithout"></span></p>
+            <!-- Total Energy Consumption removed per user request -->
+            <p>Battery Life: <span id="batteryLifeValueWithout">__</span> <span id="batteryLifeUnitWithout">hours</span></p>
+            <p id="shelfNoteWithout" class="note" style="display:none; font-size:12px; color:#b33; margin-top:6px;"></p>
+        </div>
+        <div class="results">
+            <h2>🔋 Battery Life with Self-Discharge</h2>
+            <p>Energy Consumption in Active Mode: <span id="activeEnergy"></span></p>
+            <p>Energy Consumption in Sleep Mode: <span id="sleepEnergy"></span></p>
+            <!-- Total Energy Consumption removed per user request -->
+            <p>Battery Life: <span id="batteryLifeValueWith">__</span> <span id="batteryLifeUnitWith">hours</span></p>
+            <p id="shelfNoteWith" class="note" style="display:none; font-size:12px; color:#b33; margin-top:6px;"></p>
         </div>
     </div>
     
     <footer>
         <p>Developed by Oleg Serbinov <a href="https://serbinov.github.io" target="_blank">Website</a> <a href="https://github.com/serbinov" target="_blank">GitHub</a></p>
-        <p>Version 1.0 | Development Date: November 28, 2025</p>
+        <p>Version 1.1 | Development Date: December 3, 2025</p>
     </footer>
     
     <script src="script.js"></script>
