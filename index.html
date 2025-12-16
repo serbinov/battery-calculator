@@ -4,15 +4,58 @@
     <meta charset="UTF-8">
     <title>Battery Life Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Battery Life Calculator - Calculate battery life for electronic devices based on active and sleep current consumption.">
-    <meta name="keywords" content="battery calculator, battery life, electronics, CR2032, AAA, AA, 9V, current consumption">
+    <meta name="description" content="Battery Life Calculator - Calculate battery life for electronic devices. Custom Electronics Development: full-cycle solutions, schematic design, PCB layout, manufacturing docs, firmware for STM32/ESP32, mechanical design in SolidWorks.">
+    <meta name="keywords" content="battery calculator, battery life, electronics, CR2032, AAA, AA, 9V, current consumption, custom electronics development, PCB design, schematic design, firmware development, STM32, ESP32, SolidWorks, mechanical design">
     <meta name="author" content="Oleg Serbinov">
     <meta property="og:title" content="Battery Life Calculator">
-    <meta property="og:description" content="Calculate battery life for electronic devices based on active and sleep current consumption.">
+    <meta property="og:description" content="Calculate battery life for electronic devices. Custom Electronics Development services.">
     <meta property="og:type" content="website">
     <link rel="icon" href="battery-favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Oleg Serbinov",
+      "url": "https://serbinov.github.io",
+      "sameAs": [
+        "https://github.com/serbinov"
+      ],
+      "service": [
+        {
+          "@type": "Service",
+          "name": "Full-Cycle Electronics Solutions",
+          "description": "From concept to prototype, we handle every stage of your project seamlessly."
+        },
+        {
+          "@type": "Service",
+          "name": "Professional Schematic Design",
+          "description": "Precise and optimized schematics tailored to your requirements."
+        },
+        {
+          "@type": "Service",
+          "name": "Expert PCB Layout & Routing",
+          "description": "High-quality board designs that ensure reliability and performance."
+        },
+        {
+          "@type": "Service",
+          "name": "Complete Manufacturing Documentation",
+          "description": "Ready-to-use files for smooth production and assembly."
+        },
+        {
+          "@type": "Service",
+          "name": "Embedded Firmware Development",
+          "description": "Custom code for STM32/ESP32 microcontrollers to power your devices."
+        },
+        {
+          "@type": "Service",
+          "name": "Mechanical Design in SolidWorks",
+          "description": "Detailed 3D modeling and engineering drawings for your mechanical components."
+        }
+      ]
+    }
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QR3RWTV5FM"></script>
     <script>
@@ -25,7 +68,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Battery Life Calculator</h1>
+        <h1>🔋 Battery Life Calculator</h1>
+        <p class="intro">This calculator simulates battery discharge to estimate its life. The model includes real-world effects: Peukert's law (capacity loss at high current), constant power draw (for DC-DC converters), voltage drop under load, temperature impact, self-discharge, and aging.</p>
         
         <div class="section">
             <h2><i class="fas fa-battery-half"></i> Battery Type Selection</h2>
@@ -149,11 +193,32 @@
             <p>Battery Life: <span id="batteryLifeValueWith">__</span> <span id="batteryLifeUnitWith">hours</span></p>
             <p id="shelfNoteWith" class="note" style="display:none; font-size:12px; color:#b33; margin-top:6px;"></p>
         </div>
+
+        <div class="results promo">
+            <h2><i class="fas fa-tools"></i> Custom Electronics Development</h2>
+            <p class="promo-subtitle">Bring your innovative ideas to life with our expert team!</p>
+            <ul class="promo-desc">
+                <li><strong>🔄 Full-Cycle Electronics Solutions</strong>: From concept to prototype, we handle every stage of your project seamlessly.</li>
+                <li><strong>📐 Professional Schematic Design</strong>: Precise and optimized schematics tailored to your requirements.</li>
+                <li><strong>🟩 Expert PCB Layout & Routing</strong>: High-quality board designs that ensure reliability and performance.</li>
+                <li><strong>📋 Complete Manufacturing Documentation</strong>: Ready-to-use files for smooth production and assembly.</li>
+                <li><strong>💻 Embedded Firmware Development</strong>: Custom code for STM32/ESP32 microcontrollers to power your devices.</li>
+                <li><strong>🔧 Mechanical Design in SolidWorks</strong>: Detailed 3D modeling and engineering drawings for your mechanical components.</li>
+            </ul>
+            <p class="promo-cta">Contact me by email to discuss your order.</p>
+            <div class="promo-contact">
+                email: <a class="promo-email" href="mailto:serbinovoleg@gmail.com">serbinovoleg@gmail.com</a>
+                <span class="divider">•</span>
+                <a href="https://serbinov.github.io" target="_blank">Website</a>
+                <span class="divider">•</span>
+                <a href="https://github.com/serbinov" target="_blank">GitHub</a>
+            </div>
+        </div>
     </div>
     
     <footer>
-        <p>Developed by Oleg Serbinov <a href="https://serbinov.github.io" target="_blank">Website</a> <a href="https://github.com/serbinov" target="_blank">GitHub</a></p>
-        <p>Version 1.1 | Development Date: December 3, 2025</p>
+        <p>Developed by Oleg Serbinov</p>
+        <p>Version 1.2 | Development Date: December 16, 2025</p>
     </footer>
     
     <script src="script.js"></script>

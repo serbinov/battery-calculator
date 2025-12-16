@@ -23,9 +23,21 @@ body {
 
 h1 {
     text-align: center;
-    color: #4a4a4a;
+    color: #000000;
     margin-bottom: 15px;
     font-size: 1.5em;
+}
+
+/* Short description under the main title */
+.intro {
+    color: #000000;
+    font-size: 0.95rem;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    text-align: center;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section {
@@ -122,11 +134,25 @@ button:hover {
 }
 
 .results {
-    margin-top: 15px;
+    margin: 15px 0;
     padding: 8px;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     background: #f0f8ff;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#avgResult {
+    min-height: auto;
+    padding: 4px 8px;
+}
+
+#avgResult h2 {
+    margin: 0;
+    white-space: nowrap;
 }
 
 .results h2 {
@@ -168,3 +194,60 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+.promo {
+    margin-top: 15px;
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #f0fff0;
+}
+
+.promo h2 {
+    margin-bottom: 8px;
+    color: #000000;
+    font-size: 1.2em;
+}
+
+.promo-desc {
+    margin: 6px 0;
+    color: #333;
+    font-size: 0.95rem;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.promo-desc li {
+    margin: 4px 0;
+}
+
+.promo-subtitle {
+    margin: 6px 0;
+    color: #333;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.promo-cta {
+    margin: 10px 0 6px 0;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.promo-contact {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #444;
+    text-align: center;
+}
+
+.promo-contact .promo-email {
+    color: #0b6bf6;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.promo .divider { margin: 0 6px; color: #999; }
