@@ -82,6 +82,7 @@
                     <option value="LR44">LR44 (150mAh, 1.5V) Alkaline</option>
                     <option value="CR2025">CR2025 (160mAh, 3V) Lithium</option>
                     <option value="CR2032">CR2032 (220mAh, 3V) Lithium</option>
+                    <option value="CR-P2">CR-P2 (1400mAh, 6V) Lithium</option>
                     <option value="AAA (Salt)">AAA (500mAh, 1.5V) Salt</option>
                     <option value="9V">9V (550mAh, 9V) Salt</option>
                     <option value="CR2450">CR2450 (560mAh, 3V) Lithium</option>
@@ -110,14 +111,14 @@
                 </select>
             </div>
             <div id="batteryInfo">
-                <p><strong>Average Capacity:</strong> <span id="capacity">0</span> mAh</p>
+                <p><strong>Average Capacity:</strong> <span id="capacity">0</span></p>
                 <p><strong>Start Voltage:</strong> <span id="voltageStart">0</span> V</p>
                 <p><strong>End Voltage:</strong> <span id="voltageEnd">0</span> V</p>
                 <div id="batteryInfoDetails"></div>
             </div>
             <div id="rechargeableCapacity" style="display: none;">
                 <div class="input-group">
-                    <label for="rechargeableCapacityInput">Capacity at 25°C (A):</label>
+                    <label for="rechargeableCapacityInput">Capacity at 25°C (Ah):</label>
                     <input type="number" id="rechargeableCapacityInput" step="0.001" min="0" class="narrow-input">
                     
                 </div>

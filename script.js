@@ -6,28 +6,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const results = document.getElementById('results');
 
     const batteryData = {
-        CR1220: { capacity: 35, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '12.5mm dia x 2.0mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 25, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
-        CR1616: { capacity: 50, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '16mm dia x 1.6mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 25, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
+        CR1220: { capacity: 35, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '12.5mm dia x 2.0mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 0.933333, peukert: 1.02, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
+        CR1616: { capacity: 50, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '16mm dia x 1.6mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 0.933333, peukert: 1.02, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
         CR1620: { capacity: 75, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '16mm dia x 2.0mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 20, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
         CR2016: { capacity: 90, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '20mm dia x 1.6mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 20, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
         LR44: { capacity: 150, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', chemistry: 'Alkaline', size: '11.6mm dia x 5.4mm', maxCurrent: '10mA', discharge: '1mA continuous', shelfLife: '5 years', shelfLifeYears: 5, selfDischargeRate: 0.166, internalResistanceOhm: 15, calendarFadePercentPerYear: 0.8, description: 'Button cell alkaline battery.' },
         CR2025: { capacity: 160, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '20mm dia x 2.5mm', maxCurrent: '1mA', discharge: '0.1mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 20, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
-        CR2032: { capacity: 220, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '20mm dia x 3.2mm', maxCurrent: '1mA', discharge: '0.2mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 20, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
+        CR2032: { capacity: 220, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '20mm dia x 3.2mm', maxCurrent: '1mA', discharge: '0.2mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 4.0, peukert: 1.02, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
+        'CR-P2': { capacity: 1400, voltageStart: 6, voltageEnd: 4, type: 'Lithium', chemistry: 'Lithium', size: '35mm dia x 19mm', maxCurrent: '1500mA', discharge: '1500mA continuous', shelfLife: '7 years', shelfLifeYears: 7, selfDischargeRate: 0.166, internalResistanceOhm: 4.0, peukert: 1.02, calendarFadePercentPerYear: 2.0, description: 'Lithium CR-P2 battery.' },
         CR2450: { capacity: 560, voltageStart: 3, voltageEnd: 2, type: 'Lithium', chemistry: 'Lithium', size: '24mm dia x 5.0mm', maxCurrent: '1mA', discharge: '0.2mA continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 12, calendarFadePercentPerYear: 0.5, description: 'Coin cell lithium battery.' },
+        18650: { capacity: 2600, voltageStart: 3.7, voltageEnd: 2.5, type: 'Li-Ion', chemistry: 'Li-Ion', size: '18.6mm dia x 65mm', maxCurrent: '5A', discharge: '1A continuous', shelfLife: '5 years', shelfLifeYears: 5, selfDischargeRate: 2, internalResistanceOhm: 0.3372, peukert: 1.02, calendarFadePercentPerYear: 3.0, description: 'Cylindrical 18650 Li-ion battery.' },
         '9V': { capacity: 550, voltageStart: 9, voltageEnd: 6, type: 'Salt', chemistry: 'Salt', size: '48mm x 26mm x 17mm', maxCurrent: '500mA', discharge: '10mA continuous', shelfLife: '3 years', shelfLifeYears: 3, selfDischargeRate: 1.0, postShelfSelfDischargeRate: 20, internalResistanceOhm: 2, calendarFadePercentPerYear: 1.0, description: 'Rectangular salt battery.' },
-        AAA: { capacity: 1000, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', chemistry: 'Alkaline', size: '10.5mm dia x 44.5mm', maxCurrent: '100mA', discharge: '10mA continuous', shelfLife: '5 years', shelfLifeYears: 5, selfDischargeRate: 0.166, internalResistanceOhm: 0.2, calendarFadePercentPerYear: 1.0, description: 'Cylindrical alkaline battery.' },
+        AA: { capacity: 2500, voltageStart: 1.5, voltageEnd: 1.0, type: 'Alkaline', chemistry: 'Alkaline', size: '14.5mm dia x 50.5mm', maxCurrent: '500mA', discharge: '50mA continuous', shelfLife: '5 years', shelfLifeYears: 5, selfDischargeRate: 0.166, internalResistanceOhm: 0.12, calendarFadePercentPerYear: 1.0, description: 'Cylindrical alkaline battery.' },
         'AAA (Salt)': { capacity: 500, voltageStart: 1.5, voltageEnd: 1.2, type: 'Salt', chemistry: 'Salt', size: '10.5mm dia x 44.5mm', maxCurrent: '50mA', discharge: '5mA continuous', shelfLife: '3 years', shelfLifeYears: 3, selfDischargeRate: 1.0, postShelfSelfDischargeRate: 20, internalResistanceOhm: 0.3, calendarFadePercentPerYear: 1.5, description: 'Cylindrical salt battery.' },
         CR123A: { capacity: 1500, voltageStart: 3, voltageEnd: 2.5, type: 'Lithium', chemistry: 'Lithium', size: '17mm dia x 34.5mm', maxCurrent: '1.5A', discharge: '0.5A continuous', shelfLife: '10 years', shelfLifeYears: 10, selfDischargeRate: 0.166, internalResistanceOhm: 0.5, calendarFadePercentPerYear: 0.5, description: 'Cylindrical lithium battery.' },
-        AA: { capacity: 2500, voltageStart: 1.5, voltageEnd: 1.2, type: 'Alkaline', chemistry: 'Alkaline', size: '14.5mm dia x 50.5mm', maxCurrent: '500mA', discharge: '50mA continuous', shelfLife: '5 years', shelfLifeYears: 5, selfDischargeRate: 0.166, internalResistanceOhm: 0.1, calendarFadePercentPerYear: 1.0, description: 'Cylindrical alkaline battery.' },
+        AAA: { capacity: 1000, voltageStart: 1.5, voltageEnd: 1.0, type: 'Alkaline', chemistry: 'Alkaline', size: '10.5mm dia x 44.5mm', maxCurrent: '100mA', discharge: '10mA continuous', shelfLife: '5 years', shelfLifeYears: 5, selfDischargeRate: 0.166, internalResistanceOhm: 0.2072, peukert: 1.02, calendarFadePercentPerYear: 1.0, description: 'Cylindrical alkaline battery.' },
         'AA (Salt)': { capacity: 900, voltageStart: 1.5, voltageEnd: 1.2, type: 'Salt', chemistry: 'Salt', size: '14.5mm dia x 50.5mm', maxCurrent: '200mA', discharge: '20mA continuous', shelfLife: '3 years', shelfLifeYears: 3, selfDischargeRate: 1.0, postShelfSelfDischargeRate: 20, internalResistanceOhm: 0.3, calendarFadePercentPerYear: 1.5, description: 'Cylindrical salt battery.' },
         D: { capacity: 10000, voltageStart: 1.5, voltageEnd: 1.2, type: 'Salt', chemistry: 'Salt', size: '34mm dia x 61.5mm', maxCurrent: '1A', discharge: '100mA continuous', shelfLife: '3 years', shelfLifeYears: 3, selfDischargeRate: 1.0, postShelfSelfDischargeRate: 20, internalResistanceOhm: 0.05, calendarFadePercentPerYear: 1.0, description: 'Large cylindrical salt battery.' },
         C: { capacity: 2000, voltageStart: 1.5, voltageEnd: 1.2, type: 'Salt', chemistry: 'Salt', size: '26mm dia x 50mm', maxCurrent: '500mA', discharge: '50mA continuous', shelfLife: '3 years', shelfLifeYears: 3, selfDischargeRate: 1.0, postShelfSelfDischargeRate: 20, internalResistanceOhm: 0.12, calendarFadePercentPerYear: 1.5, description: 'Medium cylindrical salt battery.' },
         'Ni-Cd': { voltageStart: 1.2, voltageEnd: 1, type: 'Ni-Cd', chemistry: 'Ni-Cd', selfDischargeRate: 12, calendarFadePercentPerYear: 5.0, internalResistanceOhm: 0.05, shelfLifeYears: 5, description: 'Nickel-Cadmium rechargeable chemistry. Self-discharge: 10-15% per month at room temperature.' },
-        'Ni-MH': { voltageStart: 1.2, voltageEnd: 1, type: 'Ni-MH', chemistry: 'Ni-MH', selfDischargeRate: 6, calendarFadePercentPerYear: 3.0, internalResistanceOhm: 0.05, shelfLifeYears: 3, description: 'Nickel-Metal Hydride rechargeable chemistry. LSD type: ~6% per month. Standard type: up to 50% in first month.' },
+        'Ni-MH': { voltageStart: 1.2, voltageEnd: 1, type: 'Ni-MH', chemistry: 'Ni-MH', selfDischargeRate: 6, calendarFadePercentPerYear: 3.0, internalResistanceOhm: 0.004, shelfLifeYears: 3, description: 'Nickel-Metal Hydride rechargeable chemistry. LSD type: ~6% per month. Standard type: up to 50% in first month.' , peukert: 1.02 },
         'Li-Ion': { voltageStart: 3.7, voltageEnd: 2.5, type: 'Li-Ion', chemistry: 'Li-Ion', selfDischargeRate: 2, calendarFadePercentPerYear: 3.0, internalResistanceOhm: 0.05, shelfLifeYears: 5, description: 'Lithium-Ion rechargeable chemistry.' },
         'Li-Pol': { voltageStart: 3.7, voltageEnd: 2.5, type: 'Li-Pol', chemistry: 'Li-Ion', selfDischargeRate: 2, calendarFadePercentPerYear: 3.0, internalResistanceOhm: 0.05, shelfLifeYears: 5, description: 'Lithium-Polymer rechargeable chemistry.' },
-        'Lead-acid': { voltageStart: 2.0, voltageEnd: 1.8, type: 'Lead-acid', chemistry: 'Lead-acid', selfDischargeRate: 5, calendarFadePercentPerYear: 3.0, internalResistanceOhm: 0.02, shelfLifeYears: 4, description: 'Lead-acid rechargeable chemistry.' }
+        'Lead-acid': { voltageStart: 2.0, voltageEnd: 1.8, type: 'Lead-acid', chemistry: 'Lead-acid', selfDischargeRate: 5, calendarFadePercentPerYear: 3.0, internalResistanceOhm: 0.02, shelfLifeYears: 4, peukert: 1.4, description: 'Lead-acid rechargeable chemistry.' }
     };
+
+    // Add Peukert's coefficient to battery data where it's significant
+    Object.keys(batteryData).forEach(key => {
+        const d = batteryData[key];
+        if (!d.peukert) {
+            switch(d.chemistry) {
+                case 'Alkaline': d.peukert = 1.35; break;
+                case 'Salt': d.peukert = 1.3; break;
+                case 'Ni-Cd': d.peukert = 1.1; break;
+                case 'Ni-MH': d.peukert = 1.08; break;
+                default: d.peukert = 1.02; // Close to 1 for Lithium
+            }
+        }
+    });
 
     // No chemistry selector: user chooses explicit option keys (e.g. "AA" or "AA (Salt)")
 
@@ -43,11 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const shownChemistry = data && data.chemistry === 'Salt' ? 'Salt' : (data && data.chemistry ? data.chemistry : 'Unknown');
             const temperature = document.getElementById('temperature').value;
             const tempFactor = getTemperatureFactor(data.chemistry, temperature);
-            // inputCapacity is given by the user in amperes (A) for rechargeables; convert to mAh
-            const inputCapacityA = parseFloat(document.getElementById('rechargeableCapacityInput').value) || 0;
-            const inputCapacity = inputCapacityA * 1000; // convert A -> mAh
+            // inputCapacity is given by the user in ampere-hours (Ah)
+            const inputCapacityAh = parseFloat(document.getElementById('rechargeableCapacityInput').value) || 0;
+            const inputCapacity = inputCapacityAh * 1000; // convert Ah -> mAh
             const adjustedCapacity = inputCapacity * tempFactor;
-            document.getElementById('capacity').textContent = adjustedCapacity.toFixed(0);
+            const displayCapacity = adjustedCapacity < 1000 ? adjustedCapacity.toFixed(0) + ' mAh' : (adjustedCapacity / 1000).toFixed(1) + ' Ah';
+            document.getElementById('capacity').textContent = displayCapacity;
             document.getElementById('voltageStart').textContent = data.voltageStart;
             document.getElementById('voltageEnd').textContent = data.voltageEnd;
             
@@ -69,7 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const temperature = document.getElementById('temperature').value;
             const tempFactor = getTemperatureFactor(data.chemistry, temperature);
             const adjustedCapacity = data.capacity * tempFactor;
-            document.getElementById('capacity').textContent = adjustedCapacity.toFixed(0);
+            const displayCapacity = adjustedCapacity < 1000 ? adjustedCapacity.toFixed(0) + ' mAh' : (adjustedCapacity / 1000).toFixed(1) + ' Ah';
+            document.getElementById('capacity').textContent = displayCapacity;
             document.getElementById('voltageStart').textContent = data.voltageStart;
             document.getElementById('voltageEnd').textContent = data.voltageEnd;
             
@@ -128,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const sleepTimeUnit = document.getElementById('sleepTimeUnit').value;
         const sleepCurrent = parseFloat(document.getElementById('sleepCurrent').value);
         const sleepCurrentUnit = document.getElementById('sleepCurrentUnit').value;
+        const consumptionMode = 'power'; // Default to Constant Power (DC-DC)
 
         if (!capacity || !activeTime || !activeCurrent || !sleepTime || !sleepCurrent) {
             alert('Please fill in all fields.');
@@ -145,6 +164,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calculate average current
         const totalTime = activeTimeSec + sleepTimeSec;
         const avgCurrent = (activeCurrentMa * activeTimeSec + sleepCurrentMa * sleepTimeSec) / totalTime;
+
+        // Peukert's Effect Adjustment
+        const peukert = batteryData[batteryType.value].peukert || 1.0;
+        let effectiveCapacity = capacity;
+        if (peukert > 1.01 && avgCurrent > 0) {
+            const ratedCurrent = capacity / 20; // Assume C/20 rating
+            effectiveCapacity = capacity * Math.pow(ratedCurrent / avgCurrent, peukert - 1);
+        }
+        capacity = effectiveCapacity; // Use effective capacity for all subsequent calculations
 
         // Calculate energy consumption (Wh)
         const activeEnergy = (activeCurrentMa / 1000) * averageVoltage * (activeTimeSec / 3600);
@@ -244,54 +272,82 @@ document.addEventListener('DOMContentLoaded', function() {
         const calendarFadeFractionPerYear = Math.max(0, calendarFadePercentPerYear) / 100;
         const calendarLambdaPerYear = calendarFadeFractionPerYear > 0 ? -Math.log(1 - calendarFadeFractionPerYear) : 0;
 
-        const dt_hours = 1; // simulation step: 1 hour for higher accuracy
+        // Adaptive simulation step: use finer steps for high currents and coarser for low currents
+        let dt_hours;
+        if (avgCurrent >= 1000) dt_hours = 1.0/60.0; // 1 minute
+        else if (avgCurrent >= 100) dt_hours = 1.0/6.0; // 10 minutes
+        else if (avgCurrent >= 10) dt_hours = 0.5; // 30 minutes
+        else dt_hours = 1.0; // 1 hour
         let remainingCapacity = capacity; // mAh
         const initialCapacity = capacity;
         // maxHours already declared earlier
         let t_hours = 0;
-        if (initialCapacity <= 0) {
-            // zero capacity -> immediate death
-            batteryLifeHoursWith = 0;
-        } else {
+        let batteryLifeHoursWith = 0;
+        let pulseLimited = false; // Flag to indicate if life was limited by pulse current
 
         // simple linear OCV model: voltageEnd + SOC*(voltageStart-voltageEnd)
         function ocvFromSoc(soc){
             return voltageEnd + soc * (voltageStart - voltageEnd);
         }
 
+        if (initialCapacity > 0) {
+            // Store initial power for constant power mode
+            const avgPowerMw = avgCurrent * averageVoltage; // mW
+            const activePowerMw = activeCurrentMa * averageVoltage; // mW
+
             // simulate until cutoff
             while (true) {
-            if (!isFinite(t_hours) || t_hours >= maxHours) { t_hours = maxHours; break; }
+                if (!isFinite(t_hours) || t_hours >= maxHours) { t_hours = maxHours; break; }
 
-            // self-discharge: exponential decay applied for dt_hours
-            if (lambdaSelfPerHour > 0) {
-                // capacity lost due to self-discharge over dt: remaining *= exp(-lambda*dt)
-                remainingCapacity *= Math.exp(-lambdaSelfPerHour * dt_hours);
-            }
+                // self-discharge: exponential decay applied for dt_hours
+                if (lambdaSelfPerHour > 0) {
+                    remainingCapacity *= Math.exp(-lambdaSelfPerHour * dt_hours);
+                }
 
-            // calendar fade reduces remaining capacity proportionally over dt (exponential)
-            if (calendarLambdaPerYear > 0) {
-                const dtYears = dt_hours / (24 * 365);
-                remainingCapacity *= Math.exp(-calendarLambdaPerYear * dtYears);
-            }
+                // calendar fade reduces remaining capacity proportionally over dt (exponential)
+                if (calendarLambdaPerYear > 0) {
+                    const dtYears = dt_hours / (24 * 365);
+                    remainingCapacity *= Math.exp(-calendarLambdaPerYear * dtYears);
+                }
 
-            // subtract load consumption for dt
-            remainingCapacity -= avgCurrent * dt_hours; // mAh
+                // Determine current for this step based on consumption mode
+                const currentSoc = remainingCapacity / initialCapacity;
+                const currentOcv = ocvFromSoc(Math.max(0, Math.min(1, currentSoc)));
+                let stepAvgCurrentMa = avgCurrent;
+                let stepActiveCurrentMa = activeCurrentMa;
 
-            if (remainingCapacity <= 0) { remainingCapacity = 0; t_hours += dt_hours; break; }
+                if (consumptionMode === 'power' && currentOcv > 0) {
+                    stepAvgCurrentMa = avgPowerMw / currentOcv;
+                    stepActiveCurrentMa = activePowerMw / currentOcv;
+                }
 
-            // check loaded voltage at the end of this step
-            const soc = remainingCapacity / initialCapacity;
-            const ocv = ocvFromSoc(Math.max(0, Math.min(1, soc)));
-            const loadA = (avgCurrent / 1000); // A
-            const loadedVoltage = ocv - loadA * rInternal;
-            if (loadedVoltage <= voltageEnd) { t_hours += dt_hours; break; }
+                // subtract load consumption for dt
+                remainingCapacity -= stepAvgCurrentMa * dt_hours; // mAh
+
+                if (remainingCapacity <= 0) { remainingCapacity = 0; t_hours += dt_hours; break; }
+
+                // check loaded voltage at the end of this step
+                const soc = remainingCapacity / initialCapacity;
+                const ocv = ocvFromSoc(Math.max(0, Math.min(1, soc)));
+                
+                // Check 1: Voltage drop from average current
+                const avgLoadA = (stepAvgCurrentMa / 1000); // A
+                const avgLoadedVoltage = ocv - avgLoadA * rInternal;
+                if (avgLoadedVoltage <= voltageEnd) { t_hours += dt_hours; break; }
+
+                // Check 2: Voltage drop from active pulse current
+                const activeLoadA = (stepActiveCurrentMa / 1000); // A
+                const pulseLoadedVoltage = ocv - activeLoadA * rInternal;
+                if (pulseLoadedVoltage <= voltageEnd) {
+                    pulseLimited = true;
+                    t_hours += dt_hours;
+                    break;
+                }
 
                 t_hours += dt_hours;
             }
         }
-
-        let batteryLifeHoursWith = t_hours;
+        batteryLifeHoursWith = t_hours;
 
         // If simulation reached shelf life cap, estimate additional lifetime based on calendar aging
         // (we no longer show an accelerated post-shelf self-discharge note). We simulate calendar
@@ -419,11 +475,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getTemperatureFactor(chemistry, temp) {
         const factors = {
-            'Lithium': { 25: 1, 0: 0.9, '-10': 0.7, '-20': 0.5 },
+            'Lithium': { '60': 0.93, 25: 1, 0: 0.9, '-10': 0.7, '-20': 0.714 },
             'Alkaline': { 25: 1, 0: 0.8, '-10': 0.6, '-20': 0.4 },
             'Salt': { 25: 1, 0: 0.5, '-10': 0.3, '-20': 0.1 },
             'Ni-Cd': { 25: 1, 0: 0.9, '-10': 0.7, '-20': 0.5 },
-            'Ni-MH': { 25: 1, 0: 0.8, '-10': 0.6, '-20': 0.4 },
+            'Ni-MH': { 25: 1, 0: 0.8, '-10': 0.6, '-20': 0.4 , internalResistanceOhm: 0.004 , peukert: 1.02 },
             'Li-Ion': { 25: 1, 0: 0.8, '-10': 0.6, '-20': 0.45 },
             'Li-Pol': { 25: 1, 0: 0.8, '-10': 0.6, '-20': 0.45 },
             'Lead-acid': { 25: 1, 0: 0.9, '-10': 0.7, '-20': 0.5 }
@@ -481,4 +537,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return { displayValue, displayUnit, iconClass };
     }
+
+    // Contact form removed — mailto link is provided in the promo block.
 });
